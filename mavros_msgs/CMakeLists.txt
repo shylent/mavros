@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(mavros_msgs)
 
-find_package(catkin REQUIRED COMPONENTS geometry_msgs sensor_msgs geographic_msgs message_generation std_msgs)
+find_package(catkin REQUIRED COMPONENTS
+  genmsg
+  geometry_msgs sensor_msgs geographic_msgs message_generation std_msgs
+  actionlib_msgs actionlib)
 
 include_directories(include)
 
@@ -27,6 +30,7 @@ add_message_files(
   HomePosition.msg
   LogData.msg
   LogEntry.msg
+  LogListItem.msg
   ManualControl.msg
   Mavlink.msg
   OpticalFlowRad.msg
@@ -85,14 +89,14 @@ add_service_files(
   WaypointSetCurrent.srv
 )
 
-# add_action_files(
-#   DIRECTORY action
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
+add_action_files(
+  DIRECTORY action
+  FILES
+  GetLogList.action
+  GetLog.action
+)
 
-generate_messages(DEPENDENCIES geometry_msgs sensor_msgs geographic_msgs std_msgs)
+generate_messages(DEPENDENCIES actionlib_msgs geometry_msgs sensor_msgs geographic_msgs std_msgs)
 
 catkin_package(
   INCLUDE_DIRS include

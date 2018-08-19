@@ -1,0 +1,7 @@
+uint16 id
+---
+bool success
+uint8[] data
+---
+uint32 bytes_transferred
+uint32 bytes_total

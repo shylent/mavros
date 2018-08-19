@@ -1,0 +1,6 @@
+---
+bool success
+LogListItem[] items
+---
+uint16 log_entries_received
+uint16 num_logs
